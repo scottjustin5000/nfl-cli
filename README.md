@@ -26,4 +26,4 @@ SR_API_KEY=YOUR_API_KEY
 | st     | season type                           |       1 |
 
 
-![example](https://www.dropbox.com/s/l6s7qxuff5wz2zh/pbp_ex.gif)
+![pbp_ex](https://user-images.githubusercontent.com/2997998/45931303-48bd6d80-bf21-11e8-915f-cb1a398793b5.gif)
