@@ -112,7 +112,7 @@ func (c Characters) print(text string, printOut bool) string {
 	return ret
 }
 
-func (c Characters) PrintS(text string) string {
+func (c Characters) GetString(text string) string {
 	return c.print(text, false)
 }
 
@@ -120,10 +120,12 @@ func (c Characters) Print(text string) {
 	c.print(text, true)
 }
 
+// Prints the ascii
 func Print(s string) {
 	NewCharacters(AsciiMap).Print(s)
 }
 
-func PrintS(s string) string {
-	return NewCharacters(AsciiMap).PrintS(s)
+// GetString returns string
+func GetString(s string) string {
+	return NewCharacters(AsciiMap).GetString(s)
 }

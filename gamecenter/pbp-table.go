@@ -7,6 +7,7 @@ import (
 	"github.com/rivo/tview"
 )
 
+// BuildPbpTable builds the tview.Yable for the game's play-by-play
 func BuildPbpTable(pbpFeed PbpFeed, table *tview.Table) int {
 
 	var rowCounter = 0

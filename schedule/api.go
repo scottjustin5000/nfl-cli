@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// ScheduleWeek structure for NFL schedule week
 type ScheduleWeek struct {
 	Season     int
 	SeasonType string
@@ -32,6 +33,7 @@ func getSchedule(seasonType string, season int, apiKey string) Schedule {
 	return data
 }
 
+// GetWeekGames gets games for the given NFL schedule week
 func GetWeekGames(seasonType string, season int, week int, apiKey string) ScheduleWeek {
 	var games []Game
 	schedule := getSchedule(seasonType, season, apiKey)

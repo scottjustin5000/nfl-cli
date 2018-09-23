@@ -105,7 +105,7 @@ func loadGameCenter(game schedule.Game, apiKey string) {
 	//create default title (only displayed when console is too small for ASCII ART)
 	rawTitle := awayName + " v. " + homeName
 	// build alternative ASCII ART title
-	teamTitle := ascii.PrintS(strings.ToLower(rawTitle))
+	teamTitle := ascii.GetString(strings.ToLower(rawTitle))
 	//build boxscore header
 	boxHeader := getBoxHeader(game, awayName, homeName)
 	//build box, quarter-by-quarter scoring
@@ -132,6 +132,7 @@ func loadGameCenter(game schedule.Game, apiKey string) {
 	grid.SetInputCapture(onInput)
 }
 
+// Build builds the game center for the given game
 func Build(gamer schedule.Game, apiKey string) {
 	game = gamer
 	app = tview.NewApplication()
@@ -209,8 +210,8 @@ func loadPlayByPlay(gameId string, apiKey string) PbpFeed {
 
 func getBox(boxScore Boxscore) *tview.Flex {
 
-	awayScore := ascii.PrintS(strconv.Itoa(boxScore.Summary.Away.Points))
-	homeScore := ascii.PrintS(strconv.Itoa(boxScore.Summary.Home.Points))
+	awayScore := ascii.GetString(strconv.Itoa(boxScore.Summary.Away.Points))
+	homeScore := ascii.GetString(strconv.Itoa(boxScore.Summary.Home.Points))
 	var periods = []string{""}
 	if len(boxScore.Scoring) > 4 {
 		for _, period := range boxScore.Scoring {

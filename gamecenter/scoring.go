@@ -20,6 +20,7 @@ func groupByQuarter(scoringDrives []ScoringDrive) map[int][]ScoringDrive {
 	return m
 }
 
+// BuildScoringTable builds a tview.Table of the gmae's scoring drives
 func BuildScoringTable(scoringDrives []ScoringDrive, table *tview.Table) int {
 	scoring := groupByQuarter(scoringDrives)
 	var keys []int

@@ -9,8 +9,10 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
+// CallbackFunc function to be called on game selection
 type CallbackFunc func(game Game)
 
+// LoadSchedule loads the NFL schedule for the given season week
 func LoadSchedule(seasonType string, season int, week int, apiKey string, cb CallbackFunc) {
 	scheduledWeek := GetScheduleWeek(seasonType, season, week, apiKey)
 

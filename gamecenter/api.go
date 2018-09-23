@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// GetBoxScore get boxscore feed for a given game
 func GetBoxScore(gameId string, apiKey string) Boxscore {
 	rs, err := http.Get("http://api.sportradar.us/nfl-radar360/games/" + gameId + "/boxscore.json?api_key=" + apiKey)
 	if err != nil {
@@ -22,6 +23,7 @@ func GetBoxScore(gameId string, apiKey string) Boxscore {
 	return data
 }
 
+// GetPlayByPlay gets play-by-play feed for a given game
 func GetPlayByPlay(gameId string, apiKey string) PbpFeed {
 	rs, err := http.Get("http://api.sportradar.us/nfl-radar360/games/" + gameId + "/pbp.json?api_key=" + apiKey)
 	if err != nil {
