@@ -29,6 +29,8 @@ var pbpFeed PbpFeed
 var grid *tview.Grid
 var game schedule.Game
 var selectedView ViewType
+var summary GameSummary
+var key string
 
 var ctx context.Context
 var cancel context.CancelFunc
@@ -77,6 +79,7 @@ var rightAlignColor = func(text string, color tcell.Color) tview.Primitive {
 }
 
 func loadGameCenter(game schedule.Game, apiKey string) {
+	key = apiKey
 	bxChan := make(chan Boxscore, 1)
 	pbpChan := make(chan PbpFeed, 1)
 	//go get data from sportradar api
@@ -133,11 +136,11 @@ func loadGameCenter(game schedule.Game, apiKey string) {
 }
 
 // Build builds the game center for the given game
-func Build(gamer schedule.Game, apiKey string) {
-	game = gamer
+func Build(selectedGame schedule.Game, apiKey string) {
+	game = selectedGame
 	app = tview.NewApplication()
 	grid = tview.NewGrid()
-	loadGameCenter(gamer, apiKey)
+	loadGameCenter(selectedGame, apiKey)
 	if pbpFeed.Status == "inprogress" {
 		pollGame(apiKey)
 	}
@@ -174,6 +177,17 @@ func pollGame(apiKey string) {
 	<-forever
 }
 
+func loadSummary() {
+	summary = GetGameSummary(game.Id, key)
+}
+
+func loadPlayerStats() {
+	if summary.Id == "" {
+		loadSummary()
+	}
+	maxRow = BuildPlayerStatsTable(summary, tref)
+}
+
 func onInput(event *tcell.EventKey) *tcell.EventKey {
 	if strconv.QuoteRune(event.Rune()) == "'x'" {
 		tref.Clear()
@@ -190,6 +204,9 @@ func onInput(event *tcell.EventKey) *tcell.EventKey {
 	} else if strconv.QuoteRune(event.Rune()) == "'b'" {
 
 	} else if strconv.QuoteRune(event.Rune()) == "'s'" {
+		tref.Clear()
+		loadPlayerStats()
+		tref.Select(rowCounter, 4)
 
 	} else if strconv.QuoteRune(event.Rune()) == "'t'" {
 

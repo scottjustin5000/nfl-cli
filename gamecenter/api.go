@@ -40,3 +40,21 @@ func GetPlayByPlay(gameId string, apiKey string) PbpFeed {
 	json.Unmarshal(body, &data)
 	return data
 }
+
+// GetGameSummary make call to SR game summary feed
+func GetGameSummary(gameId string, apiKey string) GameSummary {
+	rs, err := http.Get("http://api.sportradar.us/nfl-radar360/games/" + gameId + "/statistics.json?api_key=" + apiKey)
+	if err != nil {
+		panic(err)
+	}
+	defer rs.Body.Close()
+
+	body, err := ioutil.ReadAll(rs.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	var data GameSummary
+	json.Unmarshal(body, &data)
+	return data
+}
