@@ -74,7 +74,7 @@ func buildPassing(table *tview.Table, summary GameSummary, rowCounter int) int {
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.Passing.Players {
 		//for _, v := range player {
 		table.SetCell(rowCounter, 0,
@@ -101,10 +101,10 @@ func buildPassing(table *tview.Table, summary GameSummary, rowCounter int) int {
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 		//	}
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.Passing.Players {
 		//for _, v := range player {
 		table.SetCell(homeCounter, 5,
@@ -197,7 +197,7 @@ func buildRushing(table *tview.Table, summary GameSummary, rowCounter int) int {
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.Rushing.Players {
 		//for _, v := range player {
 		table.SetCell(rowCounter, 0,
@@ -224,10 +224,10 @@ func buildRushing(table *tview.Table, summary GameSummary, rowCounter int) int {
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 		//	}
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.Rushing.Players {
 		//for _, v := range player {
 		table.SetCell(homeCounter, 5,
@@ -320,7 +320,7 @@ func buildReceiving(table *tview.Table, summary GameSummary, rowCounter int) int
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.Receiving.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -346,10 +346,10 @@ func buildReceiving(table *tview.Table, summary GameSummary, rowCounter int) int
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 		//	}
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.Receiving.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
@@ -440,7 +440,7 @@ func buildFumbles(table *tview.Table, summary GameSummary, rowCounter int) int {
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.Fumbles.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -477,10 +477,10 @@ func buildFumbles(table *tview.Table, summary GameSummary, rowCounter int) int {
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 		//	}
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.Fumbles.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
@@ -582,7 +582,7 @@ func buildKicking(table *tview.Table, summary GameSummary, rowCounter int) int {
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.FieldGoals.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -607,9 +607,9 @@ func buildKicking(table *tview.Table, summary GameSummary, rowCounter int) int {
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.FieldGoals.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
@@ -700,7 +700,7 @@ func buildKickReturns(table *tview.Table, summary GameSummary, rowCounter int) i
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.KickoffReturns.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -725,9 +725,9 @@ func buildKickReturns(table *tview.Table, summary GameSummary, rowCounter int) i
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.KickoffReturns.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
@@ -818,7 +818,7 @@ func buildPunts(table *tview.Table, summary GameSummary, rowCounter int) int {
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.Punts.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -843,9 +843,9 @@ func buildPunts(table *tview.Table, summary GameSummary, rowCounter int) int {
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.Punts.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
@@ -936,7 +936,7 @@ func buildPuntReturns(table *tview.Table, summary GameSummary, rowCounter int) i
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.PuntReturns.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -961,9 +961,9 @@ func buildPuntReturns(table *tview.Table, summary GameSummary, rowCounter int) i
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.PuntReturns.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
@@ -1054,7 +1054,7 @@ func buildDefense(table *tview.Table, summary GameSummary, rowCounter int) int {
 			SetTextColor(tcell.ColorGreen).
 			SetAlign(tview.AlignLeft))
 	rowCounter++
-	passingCounter := 0
+	statCounter := 0
 	for _, player := range summary.Statistics.Away.Defense.Players {
 		table.SetCell(rowCounter, 0,
 			tview.NewTableCell(player["name"].(string)).
@@ -1079,9 +1079,9 @@ func buildDefense(table *tview.Table, summary GameSummary, rowCounter int) int {
 				SetTextColor(tcell.ColorWhite).
 				SetAlign(tview.AlignLeft))
 		rowCounter++
-		passingCounter++
+		statCounter++
 	}
-	homeCounter := rowCounter - passingCounter
+	homeCounter := rowCounter - statCounter
 	for _, player := range summary.Statistics.Home.Defense.Players {
 		table.SetCell(homeCounter, 5,
 			tview.NewTableCell(player["name"].(string)).
